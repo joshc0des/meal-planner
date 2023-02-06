@@ -15,7 +15,7 @@ app.get('/', (request, response) => {  // home page
 app.get('/info', (request, response) => {
   Recipe.countDocuments({}).then((count) => {
     let htmlInfo = `
-    <h4>Meal Planner has info for ${count} recipes</h4><br />
+    <h4>Meal Planner has info for ${count} recipes</h4>
     ${new Date()}
     `
 
@@ -24,7 +24,11 @@ app.get('/info', (request, response) => {
 })
 
 
-
+app.get('/api/recipes', (request, response) => {
+  Recipe.find({}).then(recipes => {
+    response.json(recipes)
+  })
+})
 
 
 
