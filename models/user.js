@@ -14,34 +14,46 @@ mongoose.connect(url)
     console.log('error connecting to MongoDB:', error.message)
   })
 
-const recipeSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
-  ingredients: {
-    type: Array,
-    required: true
+  email: {
+    type: String,
+    required: true,
+    unique: true
   },
-  steps: {
-    type: Array,
-    required: true
+  password: { 
+    type: String, 
+    required: true 
   },
-  prepTime: {
-    type: Number,
-    required: true
+  age: { 
+    type: Number, 
+    min: 0 
   },
-  servings: {
-    type: Number,
-    required: true
+  gender: { 
+    type: String, 
+    enum: ['male', 'female'] 
   },
-  calsPerServing: {
-    type: Number,
-    required: true
-  }
+  height: { 
+    type: Number, 
+    min: 0 
+  },
+  weight: { 
+    type: Number, 
+    min: 0 
+  },
+  createdAt: { 
+    type: Date, 
+    default: Date.now 
+  },
+  updatedAt: { 
+    type: Date 
+  },
 })
 
-recipeSchema.set('toJSON', {
+userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
@@ -50,4 +62,4 @@ recipeSchema.set('toJSON', {
 })
 
 
-module.exports = mongoose.model('Recipe', recipeSchema)
+module.exports = mongoose.model('User', userSchema)
