@@ -8,10 +8,10 @@ console.log('connecting to', url)
 
 mongoose.connect(url)
   .then(result => {
-    console.log('connected to MongoDB')
+    console.log('User model connected to MongoDB')
   })
   .catch((error) => {
-    console.log('error connecting to MongoDB:', error.message)
+    console.log('error connecting User model to MongoDB:', error.message)
   })
 
 const userSchema = new mongoose.Schema({

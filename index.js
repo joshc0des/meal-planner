@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const Recipe = require('./models/recipe')
+const User = require('./models/user')
 const cors = require('cors')
 const app = express()
 app.use(express.json());

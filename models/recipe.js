@@ -8,10 +8,10 @@ console.log('connecting to', url)
 
 mongoose.connect(url)
   .then(result => {
-    console.log('connected to MongoDB')
+    console.log('Recipe model connected to MongoDB')
   })
   .catch((error) => {
-    console.log('error connecting to MongoDB:', error.message)
+    console.log('error connecting Recipe model to MongoDB:', error.message)
   })
 
 const recipeSchema = new mongoose.Schema({
