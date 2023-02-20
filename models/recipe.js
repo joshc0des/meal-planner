@@ -27,10 +27,18 @@ const recipeSchema = new mongoose.Schema({
     type: Array,
     required: true
   },
-  preparationTime: {
+  prepTime: {
     type: Number,
     required: true
-  }  // add calories per serving, number of servings, and boolean for makesGoodLeftovers
+  },
+  servings: {
+    type: Number,
+    required: true
+  },
+  calsPerServing: {
+    type: Number,
+    required: true
+  }
 })
 
 recipeSchema.set('toJSON', {
